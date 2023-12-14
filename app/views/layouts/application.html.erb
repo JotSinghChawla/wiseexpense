@@ -8,9 +8,23 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      .field_with_errors{
+        display: inline;
+      }
+    </style>
   </head>
 
   <body>
+    <% flash.each do |name, message| %>
+      <div class="alert alert-primary alert-dismissible fade show <%= 'alert-warning' if name == 'alert' %>" role="alert">
+        <strong><%= message %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
+    <%= @current_wiseuser.inspect %>
     <%= yield %>
   </body>
 </html>
