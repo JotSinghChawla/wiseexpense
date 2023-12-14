@@ -1,0 +1,14 @@
+<h1>Wiseuser Log In</h1>
+  <%= form_with model: @new_wiseuser, url: session_create_path, local: true do |f| %>
+
+    <%= f.label "Email: "%>
+    <%= f.email_field :email %>
+    <br /><br />
+
+    <%= f.label "Password: "%>
+    <%= f.password_field :password %>
+    <br /><br />
+
+    <%= f.submit 'Sign Up' %>
+
+  <% end %>

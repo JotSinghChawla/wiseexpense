@@ -1,5 +1,8 @@
 class WiseuserController < ApplicationController
-  
+
+  def sign_in
+  end
+
   def new
     @new_wiseuser = Wiseuser.new
   end
