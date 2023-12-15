@@ -1,5 +1,7 @@
 class WiseuserController < ApplicationController
 
+  include ErrorConcern
+
   def sign_in
   end
 
@@ -14,16 +16,9 @@ class WiseuserController < ApplicationController
       cookies[:uuid] = @new_wiseuser.uuid
       redirect_to root_path, notice: "Successfully created account!"
     else
-      error_arr = []
-      [:first_name, :last_name, :email, :password].each do |item|
-        error_arr+=@new_wiseuser.errors.full_messages_for(item)
-      end
-      if error_arr.present?
-        error_message = "Errors: " + error_arr.flatten.join(", ")
-      else
-        error_message = "Something went wrong!"
-      end
-      flash.now[:alert] = error_message
+      wiseuser_column_arr = [:first_name, :last_name, :email, :password]
+    
+      flash.now[:alert] = get_error_message_for_columns(wiseuser_column_arr, @new_wiseuser)
       render :new, status: :unprocessable_entity
     end
   end

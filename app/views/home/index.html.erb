@@ -10,27 +10,28 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Member</a>
+            <a class="nav-link active" aria-current="page" href="#">Link 1</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Courses</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Blog</a>
+            <a class="nav-link active" href="#">Link 2</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Event</a>
+            <a class="nav-link active" aria-current="page" href="#">Link 3</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Link 4</a>
           </li>
 
         </ul>
         <% unless @current_wiseuser.present? %>
-          <form class="">
-            <a class="btn btn-outline-primary mr-2" href="/wiseuser/sign_in">Login</a>
-            <a class="btn btn-outline-success" href="/wiseuser/new">Sign up</a>
-          </form>
+          <div class="">
+            <%= link_to "Login", wiseuser_sign_in_path, class: "btn btn-outline-primary" %>
+            <%= link_to "Sign up", wiseuser_new_path, class: "btn btn-outline-success" %>
+          </div>
         <% else %>
+          <%= link_to "Add Expense", new_expense_path, class: "btn btn-outline-success mr-5" %>
           <%= form_with url: session_destroy_path, method: :delete do |f| %>
             <%= f.submit "Logout", class: "btn btn-outline-danger mr-2" %>
           <% end %>

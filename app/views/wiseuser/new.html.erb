@@ -2,20 +2,20 @@
   <%= form_with model: @new_wiseuser, url: wiseuser_create_path, local: true do |f| %>
       
     <%= f.label "Firstname: " %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, required: true %>
     <br /><br />
     
     <%= f.label "Lastname: "%>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, required: true %>
     <br /><br />
    
 
     <%= f.label "Email: "%>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, required: true %>
     <br /><br />
 
     <%= f.label "Password: "%>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, required: true %>
     <br /><br />
 
     <%= f.submit 'Sign Up' %>

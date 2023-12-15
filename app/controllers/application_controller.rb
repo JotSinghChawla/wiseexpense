@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     before_action :set_wiseuser
 
     def authenticate_wiseuser!
-        unless @wiseuser.present?
+        unless @current_wiseuser.present?
             redirect_to wiseuser_new_path, notice: "Please Login to access this page!"
         end
     end
