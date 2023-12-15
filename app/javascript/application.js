@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "popper"
 import "bootstrap"
+import "chartkick"
+import "Chart.bundle"
+// import "chartkick/chart.js"

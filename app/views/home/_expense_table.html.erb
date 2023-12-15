@@ -1,3 +1,5 @@
+<%= pie_chart @all_expense.group(:main_category).sum(:amount), donut: true, download: {background: "#ffffff"} %>
+
 <div class="table-responsive">
   <table class="table table-sm">
     <thead>
