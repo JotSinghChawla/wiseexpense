@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post 'session/create'
   delete 'session/destroy'
 
+  resources :expense, only: [:create, :new]
 end
