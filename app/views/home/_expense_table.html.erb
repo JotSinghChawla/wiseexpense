@@ -1,0 +1,27 @@
+<div class="table-responsive">
+  <table class="table table-sm">
+    <thead>
+        <tr>
+            <%# <th scope="col">Id</th> %>
+            <th scope="col">Amount</th>
+            <th scope="col">Category</th>
+            <th scope="col">Sub Category</th>
+            <th scope="col">Payment Mode</th>
+            <th scope="col">Description</th>
+            <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @all_expense.each do |expense| %>
+            <tr>
+                <th scope="row"><%= expense.amount %></th>
+                <td><%= expense.main_category %></td>
+                <td><%= expense.sub_category %></td>
+                <td><%= expense.payment_mode %></td>
+                <td><%= expense.description %></td>
+                <td><%= simple_format_datetime(expense.expense_time) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

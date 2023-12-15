@@ -1,0 +1,33 @@
+<h1>Add new Expense</h1>
+  <%= form_with model: @new_expense, url: expense_index_path, method: :post, local: true do |f| %>
+
+    <%= f.hidden_field :wiseuser_id, value: @current_wiseuser.id %>
+
+     
+    <%= f.label "Amount: " %>
+    <%= f.number_field :amount, required: true %>
+    <br /><br />
+      
+    <%= f.label "Category: " %>
+    <%= f.select :main_category, options_for_select(Expense.main_categories.keys.map {|item| [item.humanize, item]}), prompt: "Select value", required: true %>
+    <br /><br />
+    
+    <%= f.label "Sub Category: " %>
+    <%= f.select :sub_category, options_for_select(Expense.sub_categories.keys.map {|item| [item.humanize, item]}), prompt: "Select value", required: true %>
+    <br /><br />
+   
+    <%= f.label "Payment Mode: " %>
+    <%= f.select :payment_mode, options_for_select(Expense.payment_modes.keys.map {|item| [item.humanize, item]}), prompt: "Select value", required: true %>
+    <br /><br />
+   
+    <%= f.label "Time of Transaction: " %>
+    <%= f.datetime_field :expense_time, required: true %>
+    <br /><br />
+
+    <%= f.label "Description: " %>
+    <%= f.text_area :description, required: true %>
+    <br /><br />
+
+    <%= f.submit 'Add' %>
+
+  <% end %>

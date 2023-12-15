@@ -1,43 +1,9 @@
-<div class="container-flouid">
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <h3>Wise Expense</h3>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Link 1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Link 2</a>
-          </li>
+<%= render 'home_navbar' %>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Link 3</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Link 4</a>
-          </li>
-
-        </ul>
-        <% unless @current_wiseuser.present? %>
-          <div class="">
-            <%= link_to "Login", wiseuser_sign_in_path, class: "btn btn-outline-primary" %>
-            <%= link_to "Sign up", wiseuser_new_path, class: "btn btn-outline-success" %>
-          </div>
-        <% else %>
-          <%= link_to "Add Expense", new_expense_path, class: "btn btn-outline-success mr-5" %>
-          <%= form_with url: session_destroy_path, method: :delete do |f| %>
-            <%= f.submit "Logout", class: "btn btn-outline-danger mr-2" %>
-          <% end %>
-        <% end %>
-
-      </div>
-    </div>
-  </nav>
+<div class="container">
+  <% if @all_expense.present? %>
+    <%= render 'expense_table' %>
+  <% else %>
+    <h1> No Expenses Yet!</h1>
+  <% end %>
 </div>
