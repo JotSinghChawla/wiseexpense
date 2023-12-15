@@ -7,6 +7,7 @@ class Wiseuser < ApplicationRecord
     validates :first_name, :last_name, :email, :uuid, presence: true
     validates :uuid, :email, uniqueness: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+    # validates :password
 
     before_validation :set_new_uuid, on: :create
 
