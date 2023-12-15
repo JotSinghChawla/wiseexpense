@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_14_184443) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_15_070324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expenses", force: :cascade do |t|
+    t.bigint "wiseuser_id", null: false
+    t.integer "amount", default: 0, null: false
+    t.integer "main_category"
+    t.integer "sub_category"
+    t.integer "payment_mode"
+    t.text "description"
+    t.datetime "expense_time"
+    t.json "meta", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wiseuser_id"], name: "index_expenses_on_wiseuser_id"
+  end
 
   create_table "wiseusers", force: :cascade do |t|
     t.string "first_name"
@@ -25,4 +39,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_184443) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "expenses", "wiseusers"
 end

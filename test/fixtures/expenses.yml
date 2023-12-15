@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wiseuser: one
+  amount: 1
+  main_category: 1
+  sub_category: 1
+  payment_mode: 1
+  description: MyText
+  expense_time: 2023-12-15 12:33:25
+  meta: {}
+
+two:
+  wiseuser: two
+  amount: 1
+  main_category: 1
+  sub_category: 1
+  payment_mode: 1
+  description: MyText
+  expense_time: 2023-12-15 12:33:25
+  meta: {}

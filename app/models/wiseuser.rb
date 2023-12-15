@@ -2,7 +2,7 @@ class Wiseuser < ApplicationRecord
     
     has_secure_password
 
-    has_many :expense
+    has_many :expenses
 
     validates :first_name, :last_name, :email, :uuid, presence: true
     validates :uuid, :email, uniqueness: true
