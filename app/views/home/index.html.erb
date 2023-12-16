@@ -1,7 +1,6 @@
-<%= render 'home_navbar' %>
-
 <div class="container">
   <% if @all_expense.present? %>
+    <%= render 'expense_charts' %>
     <%= render 'expense_table' %>
   <% else %>
     <h1> No Expenses Yet!</h1>

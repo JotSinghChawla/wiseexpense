@@ -1,0 +1,28 @@
+<div class="buttons mt-4 mb-5">
+  <button class="btn btn-primary" type="button" onclick="showExpenseChartDivs('expense_chart_div1');">Last 30 Days</button>
+  <button class="btn btn-primary" type="button" onclick="showExpenseChartDivs('expense_chart_div2');">Last Week</button>
+  <button class="btn btn-primary" type="button" onclick="showExpenseChartDivs('expense_chart_div3');">Total Spendings</button>
+</div>
+
+<div class="row">
+  <div id="expense_chart_div1" class="hidden_expense_chart">
+    <%= line_chart last_30_days_spending, title: "Last Month Expense", suffix: " ₹" %>
+  </div>
+  <div id="expense_chart_div2" class="hidden_expense_chart d-none">
+    <%= line_chart last_7_days_spending, title: "Last Week Expense", suffix: " ₹" %>
+  </div>
+  <div id="expense_chart_div3" class="hidden_expense_chart d-none">
+    <%= pie_chart total_category_wise_spending, title: "Total Spendings", suffix: " ₹", donut: true, download: {background: "#ffffff"} %>
+  </div>
+</div>
+
+
+<script>
+    function showExpenseChartDivs(id) {
+    const hiddenExpenseChartDivs = document.querySelectorAll(".hidden_expense_chart");
+    for (const div of hiddenExpenseChartDivs) {
+        div.classList.add("d-none");
+    }
+    document.getElementById(id).classList.remove("d-none").add("active_expense_chart");
+    }
+</script>

@@ -1,7 +1,13 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+
+// Stimulus controllers
+// import "./controllers"
+
 import "@hotwired/turbo-rails"
 import "popper"
 import "bootstrap"
 import "chartkick"
 import "Chart.bundle"
-// import "chartkick/chart.js"
+
+// disable data turbo as default
+Turbo.session.drive = false
