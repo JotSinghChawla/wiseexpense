@@ -7,12 +7,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-
+  
   get 'wiseuser/new'
   get 'wiseuser/sign_in'
   post 'wiseuser/create'
   post 'session/create'
   delete 'session/destroy'
 
-  resources :expense, only: [:create, :new]
+  resources :expense, only: [:create, :new] do
+    collection do 
+      get :get_subcategories
+    end
+  end
 end

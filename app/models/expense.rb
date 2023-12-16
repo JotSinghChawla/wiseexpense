@@ -1,4 +1,7 @@
 class Expense < ApplicationRecord
+
+  include ExpenseConcern
+
   belongs_to :wiseuser
 
   validates :amount, :wiseuser_id, :main_category, :sub_category, :payment_mode, :description, :expense_time, presence: true

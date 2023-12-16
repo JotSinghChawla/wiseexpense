@@ -1,5 +1,5 @@
 class ExpenseController < ApplicationController
-    before_action :authenticate_wiseuser!
+    before_action :authenticate_wiseuser!, except: %i[get_subcategories]
 
     def new
         @new_expense = Expense.new
@@ -12,6 +12,12 @@ class ExpenseController < ApplicationController
         else
             flash.now[:alert] = "Error: #{@new_expense.errors.full_messages}"
             render :new, status: :unprocessable_entity
+        end
+    end
+
+    def get_subcategories
+        respond_to do |format|
+            format.json { render json: Expense.get_expense_sub_categories_for(params['main_category'].to_s).keys.map {|item| [item.humanize, item]} }
         end
     end
 
