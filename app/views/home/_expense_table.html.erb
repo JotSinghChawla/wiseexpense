@@ -1,6 +1,4 @@
-<%= pie_chart @all_expense.group(:main_category).sum(:amount), donut: true, download: {background: "#ffffff"} %>
-
-<div class="table-responsive">
+<div class="table-responsive my-5">
   <table class="table table-sm">
     <thead>
         <tr>
@@ -17,9 +15,9 @@
         <% @all_expense.each do |expense| %>
             <tr>
                 <th scope="row"><%= expense.amount %></th>
-                <td><%= expense.main_category %></td>
-                <td><%= expense.sub_category %></td>
-                <td><%= expense.payment_mode %></td>
+                <td><%= expense.main_category.humanize %></td>
+                <td><%= expense.sub_category.humanize %></td>
+                <td><%= expense.payment_mode.humanize %></td>
                 <td><%= expense.description %></td>
                 <td><%= simple_format_datetime(expense.expense_time) %></td>
             </tr>
