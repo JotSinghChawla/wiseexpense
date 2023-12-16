@@ -13,6 +13,9 @@
       .field_with_errors{
         display: inline;
       }
+      .active_expense_chart {
+        
+      }
     </style>
   </head>
 
@@ -23,6 +26,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <% end %>
+
+    <%= render 'shared/main_navbar' %>
 
     <%= yield %>
   </body>
