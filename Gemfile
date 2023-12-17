@@ -51,6 +51,12 @@ gem "chartkick"
 # For different 'group by' methods
 gem "groupdate"
 
+# To Load and Maintain keys and secret for Development
+gem 'dotenv-rails', groups: [:development, :test]
+
+# Google recaptcha
+gem "recaptcha"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

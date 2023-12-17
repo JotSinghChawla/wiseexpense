@@ -9,7 +9,11 @@ module ErrorConcern
         if error_arr.present?
             error_message = "Errors: " + error_arr.flatten.join(", ")
         else
-            error_message = "Something went wrong!"
+            if error_object.errors.first && error_object.errors.first.type == "reCAPTCHA verification failed, please try again."
+                error_message = error_object.errors.first.full_message
+            else
+                error_message = "Something went wrong!"
+            end
         end
         return error_message
     end

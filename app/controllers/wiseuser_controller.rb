@@ -11,7 +11,8 @@ class WiseuserController < ApplicationController
 
   def create
     @new_wiseuser = Wiseuser.new(wiseuser_params)
-    if @new_wiseuser.save
+
+    if verify_recaptcha(model: @new_wiseuser) && @new_wiseuser.save
       cookies[:remember_token] = @new_wiseuser.remember_token
       cookies[:uuid] = @new_wiseuser.uuid
       redirect_to root_path, notice: "Successfully created account!"
