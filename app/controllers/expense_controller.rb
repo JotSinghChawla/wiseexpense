@@ -6,7 +6,10 @@ class ExpenseController < ApplicationController
     end
 
     def create
-        @new_expense = Expense.new(expense_params)
+        temp_expense_params = expense_params
+        temp_expense_params["expense_time"] = Time.parse(temp_expense_params["expense_time"]).utc
+        
+        @new_expense = Expense.new(temp_expense_params)
         if @new_expense.save
             redirect_to root_path, notice: "Expense Added Successfuly!"
         else
@@ -24,6 +27,6 @@ class ExpenseController < ApplicationController
     private
 
     def expense_params
-        params.require(:expense).permit(:wiseuser_id, :amount, :main_category, :sub_category, :expense_time, :description, :payment_mode)
+        params.require(:expense).permit(:wiseuser_id, :amount, :main_category, :sub_category, :description, :payment_mode, :expense_time)
     end
 end

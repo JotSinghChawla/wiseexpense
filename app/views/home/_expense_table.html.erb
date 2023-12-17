@@ -19,7 +19,7 @@
                 <td><%= expense.sub_category.humanize %></td>
                 <td><%= expense.payment_mode.humanize %></td>
                 <td><%= expense.description %></td>
-                <td><%= simple_format_datetime(expense.expense_time) %></td>
+                <td><%= simple_format_datetime(in_user_time_zone(expense.expense_time)) %></td>
             </tr>
         <% end %>
     </tbody>
